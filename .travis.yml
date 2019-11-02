@@ -1,0 +1,31 @@
+sudo: required
+language: bash
+
+#if: branch = master AND tag IS present
+if: tag IS present
+
+#install:
+#  - apt-get update
+#  - apt-get install osc
+
+script:
+  - set -e
+  - echo $TRAVIS_TAG
+  - echo $TRAVIS_BUILD_DIR
+  - echo $HOME
+  - echo $TRAVIS_SECURE_ENV_VARS
+  - echo $SECRET_TEST
+  - uname -a
+  - type osc
+  - echo "after error"
+  - set +e
+
+  #- git clone --depth 1 https://github.com/ungoogled-software/ungoogled-chromium-debian
+  #- cd ungoogled-chromium-debian
+  #- git -C ungoogled-chromium-debian/ungoogled-upstream clone --branch <RELEASED_TAG> --depth 1 https://github.com/Eloston/ungoogled-chromium
+  #- git -c submodule."debian/ungoogled-upstream/ungoogled-chromium".update=none submodule update --depth 1 --init --recursive
+  #- cp -r ungoogled-chromium-debian/debian build/src/
+
+  #- debian/rules get-orig-source
+  #- debuild -S -sa
+
